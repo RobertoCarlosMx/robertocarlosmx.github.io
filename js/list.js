@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".btn.btn-light").addEventListener("click", clearAll);
 });
 
-let currentCharacterIndex = 0;
+let currentCharacterIndex;
 
 async function showNextCharacter() {
     const response = await fetch('https://rickandmortyapi.com/api/character');
@@ -17,7 +17,7 @@ async function showNextCharacter() {
         const episodes = characterInfo.episode.slice(0, 3);
         const episodesData = await Promise.all(episodes.map(url => fetch(url).then(response => response.json())));
 
-        var total = itemList.childElementCount + 1;
+        var total = itemList.childElementCount + 0;
         var clone = template.content.cloneNode(true);
         clone.querySelector("[data-id='number']").textContent = `${total}`;
         clone.querySelector("[data-id='title']").textContent = character.name;
@@ -30,10 +30,8 @@ async function showNextCharacter() {
             episodeElement.textContent = `${episode.name}`;
             episodesList.appendChild(episodeElement);
         });
-
-        itemList.appendChild(clone);
-
         currentCharacterIndex++;
+        itemList.appendChild(clone);
     }
 }
 
