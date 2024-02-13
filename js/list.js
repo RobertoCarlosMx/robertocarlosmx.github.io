@@ -30,8 +30,9 @@ async function showNextCharacter() {
             episodeElement.textContent = `${episode.name}`;
             episodesList.appendChild(episodeElement);
         });
-        currentCharacterIndex++;
+        
         itemList.appendChild(clone);
+        currentCharacterIndex++;
     }
 }
 
