@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".btn.btn-light").addEventListener("click", clearAll);
 });
 
-let currentCharacterIndex;
+let currentCharacterIndex = 0;
 
 async function showNextCharacter() {
     const response = await fetch('https://rickandmortyapi.com/api/character');
